@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  Cuppy
+
+  Created by Gary Foubister on 2/16/14.
+  Copyright (c) 2014 Silver Shine, LLC. All rights reserved.
+*/
+
+"STANDINGS_TITLE" = "Standings";
+"STANDINGS_HEADER_PLAYED" = "P";
+"STANDINGS_HEADER_WON" = "W";
+"STANDINGS_HEADER_LOST" = "L";
+"STANDINGS_HEADER_DRAWN" = "D";
+"STANDINGS_HEADER_GOAL_DIFFERENCE" = "GD";
+"STANDINGS_HEADER_POINTS" = "Pts";
+
+"RESULTS_TITLE" = "Results";
+
+"ABOUT_TITLE" = "About";
+
+"ABOUT_TEXT" = "The Cascadia Cup competition was formed in 2004 by the supporters of the Portland Timbers, Seattle Sounders, and Vancouver Whitecaps.\n\nThe Cascadia Cup Council retains the legal rights to the name Cascadia Cup.\n\nThe Cascadia Cup Council:\nhttp://www.cascadiacup.com\n\nMLS Soccer:\nhttp://www.mlssoccer.com\n\nPortland Timbers:\nhttp://www.timbers.com\n\nSeattle Sounders:\nhttp://www.soundersfc.com\n\nVancouver Whitecaps:\nhttp://www.whitecapsfc.com\n\nWikipedia:\nhttp://en.wikipedia.org/wiki/Cascadia_Cup\n\n\n";

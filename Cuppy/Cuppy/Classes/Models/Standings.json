@@ -1,0 +1,35 @@
+ [
+  {
+  "Team": "Portland",
+  "Played": "0",
+  "Won": "0",
+  "Lost": "0",
+  "Drawn": "0",
+  "GoalsFor": "0",
+  "GoalsAgainst": "0",
+  "GoalDifference": "0",
+  "Points": "0"
+  },
+  {
+  "Team": "Seattle",
+  "Played": "0",
+  "Won": "0",
+  "Lost": "0",
+  "Drawn": "0",
+  "GoalsFor": "0",
+  "GoalsAgainst": "0",
+  "GoalDifference": "0",
+  "Points": "0"
+  },
+  {
+  "Team": "Vancouver",
+  "Played": "0",
+  "Won": "0",
+  "Lost": "0",
+  "Drawn": "0",
+  "GoalsFor": "0",
+  "GoalsAgainst": "0",
+  "GoalDifference": "0",
+  "Points": "0"
+  }
+]
