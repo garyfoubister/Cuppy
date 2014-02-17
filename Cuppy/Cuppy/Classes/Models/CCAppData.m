@@ -45,6 +45,8 @@ static CCAppData *instance = nil;
 
 - (void)saveCachedStandings: (NSMutableArray *)standings
 {
+	[self saveStandingslastUpdate];
+	
 	NSData *standingsData = [NSKeyedArchiver archivedDataWithRootObject: standings];
 	[self.userDefaults setValue: standingsData forKey: KEY_CACHED_STANDINGS];
 	[self.userDefaults synchronize];
@@ -56,9 +58,9 @@ static CCAppData *instance = nil;
 	return lastUpdated;
 }
 
-- (void) saveStandingslastUpdate: (NSString *)lastUpdated
+- (void) saveStandingslastUpdate
 {
-	[self.userDefaults setValue: lastUpdated forKey: KEY_STANDINGS_LAST_UPDATED];
+	[self.userDefaults setValue: [self getCurrentDateAndTimeAsString] forKey: KEY_STANDINGS_LAST_UPDATED];
 	[self.userDefaults synchronize];
 }
 
@@ -72,9 +74,35 @@ static CCAppData *instance = nil;
 
 - (void)saveCachedResults: (NSMutableArray *)results
 {
+	[self saveResultslastUpdate];
+	
 	NSData *resultsData = [NSKeyedArchiver archivedDataWithRootObject: results];
 	[self.userDefaults setValue: resultsData forKey: KEY_CACHED_RESULTS];
 	[self.userDefaults synchronize];
+}
+
+- (NSString *)getResultsLastUpdated
+{
+	NSString *lastUpdated = [self.userDefaults stringForKey: KEY_RESULTS_LAST_UPDATED];
+	return lastUpdated;
+}
+
+- (void) saveResultslastUpdate
+{
+	[self.userDefaults setValue: [self getCurrentDateAndTimeAsString] forKey: KEY_RESULTS_LAST_UPDATED];
+	[self.userDefaults synchronize];
+}
+
+#pragma mark - Date -
+
+- (NSString *)getCurrentDateAndTimeAsString
+{
+	NSDateFormatter *dateformater = [[NSDateFormatter alloc] init];
+	[dateformater setDateFormat: @"YYYY-MM-dd hh:mm:ss a"];
+	
+	NSString *formattedDateString = [dateformater stringFromDate: [NSDate date]];
+	
+	return formattedDateString;
 }
 
 @end

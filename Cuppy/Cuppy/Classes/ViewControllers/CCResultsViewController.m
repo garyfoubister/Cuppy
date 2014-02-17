@@ -7,6 +7,7 @@
 //
 
 #import "CCResultsViewController.h"
+#import "Constants.h"
 
 @interface CCResultsViewController ()
 
@@ -14,50 +15,44 @@
 
 @implementation CCResultsViewController
 
+#pragma mark - View Controller Methods -
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	
-	self.lblTitle.text = NSLocalizedString(@"RESULTS_TITLE", nil);
+	self.lblTitle.text = NSLocalizedString(KEY_RESULTS_TITLE, nil);
 	
-	[self loadResults];
+	[CCResults instance].delegate = self;
+	
+	[[CCResults instance] downloadResults];
 }
 
-#pragma mark - Data Methods -
+#pragma mark - Results Data Methods -
 
-- (void)loadResults
+- (void)didFetchResults: (NSMutableArray *)results
 {
-	self.results = [[NSMutableArray alloc] init];
+	self.results = results;
+	[self.tableView reloadData];
+}
+
+- (void)didFailToFetchResults: (NSString *)error
+{
+	NSString *alertTitle = NSLocalizedString(KEY_ALERT_TITLE_CUPPY, nil);
+	NSString *cancelButtonTitle = NSLocalizedString(KEY_ALERT_BUTTON_CANCEL, nil);
 	
-    NSString *path = [[NSBundle mainBundle] pathForResource: @"Results"
-                                                     ofType: @"json"];
-	
-    NSString *data = [NSString stringWithContentsOfFile: path
-                                               encoding: NSUTF8StringEncoding
-                                                  error: nil];
-    
-    NSData *resultData = [data dataUsingEncoding: NSUTF8StringEncoding];
-	
-    self.results = [NSJSONSerialization JSONObjectWithData: resultData
-												   options: kNilOptions
-													 error: nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: alertTitle
+                                                    message: error
+                                                   delegate: nil
+                                          cancelButtonTitle: cancelButtonTitle
+                                          otherButtonTitles: nil];
+    [alert show];
 }
 
 #pragma mark - Table Methods -
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-	return [self.results count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView
-		 cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView: (UITableView *)tableView
+		 cellForRowAtIndexPath: (NSIndexPath *)indexPath
 {
 	NSString *cellIdentifier = @"Cell";
 	
@@ -77,23 +72,33 @@
 
 	NSDictionary *resultsDictionary = [self.results objectAtIndex: indexPath.row];
 	
-	NSString *homeTeam = [NSString stringWithFormat: @"%@-Logo", [resultsDictionary objectForKey: @"Home"]];
+	NSString *homeTeam = [NSString stringWithFormat: @"%@-Logo", [resultsDictionary objectForKey: JSON_KEY_HOME]];
 	
-	NSString *awayTeam = [NSString stringWithFormat: @"%@-Logo", [resultsDictionary objectForKey: @"Away"]];
+	NSString *awayTeam = [NSString stringWithFormat: @"%@-Logo", [resultsDictionary objectForKey: JSON_KEY_AWAY]];
 	
 	NSString *dateAndVenue = [NSString stringWithFormat: @"%@ - %@",
-							  [resultsDictionary objectForKey: @"Date"],
-							  [resultsDictionary objectForKey: @"Venue"]];
+							  [resultsDictionary objectForKey: JSON_KEY_DATE],
+							  [resultsDictionary objectForKey: JSON_KEY_VENUE]];
 		
 
 	imgHomeTeamLogo.image		= [UIImage imageNamed: homeTeam];
 	imgAwayTeamLogo.image		= [UIImage imageNamed: awayTeam];
-	lblHomeGoals.text			= [resultsDictionary objectForKey: @"HomeGoals"];
-	lblAwayGoals.text			= [resultsDictionary objectForKey: @"AwayGoals"];
+	lblHomeGoals.text			= [resultsDictionary objectForKey: JSON_KEY_HOME_GOAL];
+	lblAwayGoals.text			= [resultsDictionary objectForKey: JSON_KEY_AWAY_GOAL];
 	lblDateAndVenue.text		= dateAndVenue;
 	
 	return cell;
 }
 
+- (NSInteger)tableView: (UITableView *)tableView
+ numberOfRowsInSection: (NSInteger)section
+{
+	return [self.results count];
+}
+
+- (NSInteger)numberOfSectionsInTableView: (UITableView *)tableView
+{
+    return 1;
+}
 
 @end

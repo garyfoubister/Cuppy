@@ -33,22 +33,10 @@
 	[self addStandingsResultsAndAboutViews];
 }
 
-- (void) addDynamicAnimatorAndGravityBehaviorsToView
-{
-	// Add dynamic animator and gravity behavior
-	self.animator = [[UIDynamicAnimator alloc] initWithReferenceView: self.view];
-	self.gravity = [[UIGravityBehavior alloc] init];
-	
-	[self.animator addBehavior: self.gravity];
-	
-	self.gravity.magnitude = 4.0f;
-}
-
 #pragma mark - Motions Effects -
 
 - (void) addMotionEffects
 {
-	//[self addMotionEffectToView: self.imgBackgroundBottom magnitude: 50.0f];
 	[self addMotionEffectToView: self.imgBackgroundTop magnitude: 20.0f];
 }
 
@@ -72,6 +60,18 @@
 	[view addMotionEffect: group];
 }
 
+#pragma mark - Dynamic Animator And Gravity  -
+
+- (void) addDynamicAnimatorAndGravityBehaviorsToView
+{
+	self.animator = [[UIDynamicAnimator alloc] initWithReferenceView: self.view];
+	self.gravity = [[UIGravityBehavior alloc] init];
+	
+	[self.animator addBehavior: self.gravity];
+	
+	self.gravity.magnitude = 4.0f;
+}
+
 #pragma mark - Views
 
 - (void)addStandingsResultsAndAboutViews
@@ -82,26 +82,23 @@
 	[self addResults];
 	[self addAbout];
 }
-- (void) addStandings
+
+- (void)addStandings
 {
 	UIViewController *standings = [self instantiateViewControllerWithIdentifier: @"Standings"];
 	[self.views addObject: [self addViewController: standings atOffset: 210.0f]];
-	
 }
 
-- (void) addResults
+- (void)addResults
 {
 	UIViewController *standings = [self instantiateViewControllerWithIdentifier: @"Results"];
-	//[self addViewController: standings atOffset: 140.0f];
 	[self.views addObject: [self addViewController: standings atOffset: 140.0f]];
 }
 
-- (void) addAbout
+- (void)addAbout
 {
 	UIViewController *standings = [self instantiateViewControllerWithIdentifier: @"About"];
-	//[self addViewController: standings atOffset: 70.0f];
 	[self.views addObject: [self addViewController: standings atOffset: 70.0f]];
-	
 }
 
 - (UIViewController *)instantiateViewControllerWithIdentifier: (NSString *)identifier
@@ -155,7 +152,7 @@
 	return view;
 }
 
-#pragma mark - Gesture -
+#pragma mark - Gesture Events -
 
 - (void)handlePan: (UIPanGestureRecognizer *)gesture
 {
@@ -165,8 +162,6 @@
 	
 	if (gesture.state == UIGestureRecognizerStateBegan)
 	{
-		// Was the pan started from the top of the recipe?
-		
 		CGPoint dragStartLocation = [gesture locationInView: draggedView];
 		
 		if (dragStartLocation.y < 200.0f)
@@ -178,20 +173,15 @@
 	}
 	else if (gesture.state == UIGestureRecognizerStateChanged && _draggingView)
 	{
-		// Handle the dragging
-		
 		CGFloat yOffset = _previousTouchPoint.y - touchPoint.y;
 		
 		gesture.view.center = CGPointMake(draggedView.center.x, draggedView.center.y - yOffset);
-		//gesture.view.center = CGPointMake(draggedView.center.x, draggedView.center.y);
 		
 		_previousTouchPoint	= touchPoint;
 	}
 	else if (gesture.state == UIGestureRecognizerStateEnded && _draggingView)
 	{
-		// The gesture has ended
-		
-		[self tryDockView: draggedView];
+		[self tryToDockView: draggedView];
 		
 		[self addVelocityToView: draggedView fromGesture: gesture];
 		
@@ -209,13 +199,15 @@
 	{
 		[self.animator removeBehavior: self.snap];
 		
-		[self setAlphaWhenViewDocked: tappedView alpha: 1.0];
+		[self setAlphaWhenIsViewDocked: tappedView alpha: 1.0];
 		
 		_viewDocked = NO;
 	}
 }
 
-- (void)tryDockView: (UIView *)view
+#pragma mark - Gesture Events -
+
+- (void)tryToDockView: (UIView *)view
 {
 	BOOL viewHasReachedDockLocation = view.frame.origin.y < 100.0;
 	
@@ -223,16 +215,13 @@
 	{
 		if (!_viewDocked)
 		{
-			//CGPoint dockPoint = CGPointMake(self.view.center.x, self.view.center.y - 6);
 			CGPoint dockPoint = CGPointMake(self.view.center.x, self.view.center.y + 20);
-			//CGPoint dockPoint = CGPointMake(self.view.center.x, self.view.center.y);
 			
 			self.snap = [[UISnapBehavior alloc] initWithItem: view snapToPoint: dockPoint];
-			//self.snap = [[UISnapBehavior alloc] initWithItem: view snapToPoint: self.view.center];
 			
 			[self.animator addBehavior: self.snap];
 			
-			[self setAlphaWhenViewDocked: view alpha: 0.0];
+			[self setAlphaWhenIsViewDocked: view alpha: 0.0];
 			
 			_viewDocked = YES;
 		}
@@ -243,14 +232,14 @@
 		{
 			[self.animator removeBehavior: self.snap];
 			
-			[self setAlphaWhenViewDocked: view alpha: 1.0];
+			[self setAlphaWhenIsViewDocked: view alpha: 1.0];
 			
 			_viewDocked = NO;
 		}
 	}
 }
 
-- (void) setAlphaWhenViewDocked: (UIView *)view alpha: (CGFloat)alpha
+- (void)setAlphaWhenIsViewDocked: (UIView *)view alpha: (CGFloat)alpha
 {
 	for (UIView * aView in _views)
 	{
@@ -285,8 +274,6 @@
 	return nil;
 }
 
-#pragma mark - Collision -
-
 - (void)collisionBehavior: (UICollisionBehavior *)behavior
 	  beganContactForItem: (id<UIDynamicItem>)item
    withBoundaryIdentifier: (id<NSCopying>)identifier
@@ -296,10 +283,8 @@
 	{
 		UIView *view = (UIView *)item;
 		
-		[self tryDockView: view];
+		[self tryToDockView: view];
 	}
 }
-
-
 
 @end

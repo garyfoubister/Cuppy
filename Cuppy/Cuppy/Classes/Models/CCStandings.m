@@ -8,6 +8,10 @@
 
 #import "CCStandings.h"
 #import "CCAppData.h"
+#import "Constants.h"
+
+@interface CCStandings()
+@end
 
 @implementation CCStandings
 
@@ -31,9 +35,16 @@ static CCStandings *instance = nil;
 {
 	[self loadCachedStandings];
 	
-	// TODO: Download the latest Standings data
-	
-	// TODO: Store the standings data
+	// TODO: Download the Standings when the endpoint is available
+			
+//	dispatch_async(BACKGROUND_QUEUE, ^{
+//		
+//        NSData *data = [NSData dataWithContentsOfURL: [NSURL URLWithString: URL_STANDINGS]];
+//        
+//		[self performSelectorOnMainThread: @selector(didFetchStandingsData:)
+//							   withObject: data
+//							waitUntilDone: YES];
+//    });
 }
 
 #pragma mark - Private Methods -
@@ -51,7 +62,7 @@ static CCStandings *instance = nil;
 	{
 		standings = [self loadStandingsFromFile];
 	}
-	
+		
 	[self notifyDelegateStandingsWereFetched: standings];
 }
 
@@ -73,6 +84,34 @@ static CCStandings *instance = nil;
 												  error: nil];
 	
 	return standings;
+}
+
+- (void)didFetchStandingsData: (NSData *)standingsData
+{
+	BOOL errorDownloading = YES;
+	
+	if (standingsData != nil)
+	{
+		NSError *error;
+		NSMutableArray *standings = [[NSMutableArray alloc] init];
+		
+		standings = [NSJSONSerialization JSONObjectWithData: standingsData
+													options: kNilOptions
+													  error: &error];
+		if (error == nil)
+		{
+			errorDownloading = NO;
+			
+			[[CCAppData instance] saveCachedStandings: standings];
+
+			[self notifyDelegateStandingsWereFetched: standings];
+		}
+	}
+	
+	if (errorDownloading)
+	{
+		[self notifyDelegateOfErrorFetchingStandings: NSLocalizedString(KEY_ERROR_DOWNLOADING_STANDINGS, nil)];
+	}
 }
 
 - (void)notifyDelegateStandingsWereFetched: (NSMutableArray *)standings

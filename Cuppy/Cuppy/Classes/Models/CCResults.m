@@ -7,6 +7,8 @@
 //
 
 #import "CCResults.h"
+#import "CCAppData.h"
+#import "Constants.h"
 
 @implementation CCResults
 
@@ -26,14 +28,103 @@ static CCResults *instance = nil;
 
 #pragma mark - Public Methods -
 
-- (void)loadCachedResults
-{
-	
-}
-
 - (void)downloadResults
 {
+	[self loadCachedResults];
 	
+	// TODO: Download the results when the endpoint is available
+	
+//	dispatch_async(BACKGROUND_QUEUE, ^{
+//		
+//        NSData *data = [NSData dataWithContentsOfURL: [NSURL URLWithString: URL_RESULTS]];
+//        
+//		[self performSelectorOnMainThread: @selector(didFetchResultsData:)
+//							   withObject: data
+//							waitUntilDone: YES];
+//    });
+}
+
+#pragma mark - Private Methods -
+
+- (void)loadCachedResults
+{
+	NSMutableArray *results;
+	NSString *resultsLastUpdated = [[CCAppData instance] getResultsLastUpdated];
+	
+	if (resultsLastUpdated)
+	{
+		results = [[CCAppData instance] getCachedResults];
+	}
+	else
+	{
+		results = [self loadResultsFromFile];
+	}
+	
+	[self notifyDelegateResultsWereFetched: results];
+}
+
+- (NSMutableArray *)loadResultsFromFile
+{
+	NSMutableArray *results = [[NSMutableArray alloc] init];
+	
+    NSString *path = [[NSBundle mainBundle] pathForResource: @"Results"
+                                                     ofType: @"json"];
+	
+    NSString *data = [NSString stringWithContentsOfFile: path
+                                               encoding: NSUTF8StringEncoding
+                                                  error: nil];
+    
+    NSData *resultData = [data dataUsingEncoding:NSUTF8StringEncoding];
+	
+    results = [NSJSONSerialization JSONObjectWithData: resultData
+											  options: kNilOptions
+												error: nil];
+	
+	return results;
+}
+
+- (void)didFetchResultsData: (NSData *)reultsData
+{
+	BOOL errorDownloading = YES;
+	
+	if (reultsData != nil)
+	{
+		NSError *error;
+		NSMutableArray *results = [[NSMutableArray alloc] init];
+		
+		results = [NSJSONSerialization JSONObjectWithData: reultsData
+												  options: kNilOptions
+													error: &error];
+		if (error == nil)
+		{
+			errorDownloading = NO;
+			
+			[[CCAppData instance] saveCachedResults: results];
+			
+			[self notifyDelegateResultsWereFetched: results];
+		}
+	}
+	
+	if (errorDownloading)
+	{
+		[self notifyDelegateOfErrorFetchingResults: NSLocalizedString(KEY_ERROR_DOWNLOADING_RESULTS, nil)];
+	}
+}
+
+- (void)notifyDelegateResultsWereFetched: (NSMutableArray *)results
+{
+	if ([self.delegate respondsToSelector: @selector(didFetchResults:)])
+	{
+		[self.delegate didFetchResults: results];
+	}
+}
+
+- (void)notifyDelegateOfErrorFetchingResults: (NSString *)error
+{
+	if ([self.delegate respondsToSelector: @selector(didFailToFetchResults:)])
+	{
+		[self.delegate didFailToFetchResults: error];
+	}
 }
 
 @end

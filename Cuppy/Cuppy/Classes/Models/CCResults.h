@@ -12,7 +12,9 @@
 
 @required
 
-- (void)didFetchResults: (NSMutableArray *)standings;
+- (void)didFetchResults: (NSMutableArray *)results;
+
+- (void)didFailToFetchResults: (NSString *)error;
 
 @optional
 
@@ -20,9 +22,9 @@
 
 @interface CCResults : NSObject
 
-+ (CCResults *) instance;
+@property (weak) id <CCResultsDelegate> delegate;
 
-- (void)loadCachedResults;
++ (CCResults *) instance;
 
 - (void)downloadResults;
 

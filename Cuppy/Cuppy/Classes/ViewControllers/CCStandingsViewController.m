@@ -20,7 +20,7 @@
 {
     [super viewDidLoad];
 	
-	self.lblTitle.text = NSLocalizedString(@"STANDINGS_TITLE", nil);
+	self.lblTitle.text = NSLocalizedString(KEY_STANDINGS_TITLE, nil);
 	
 	[CCStandings instance].delegate = self;
 	
@@ -37,13 +37,21 @@
 
 - (void)didFailToFetchStandings: (NSString *)error
 {
-	// TODO: Notify the user there was a problem downloading the Standings
+	NSString *alertTitle = NSLocalizedString(KEY_ALERT_TITLE_CUPPY, nil);
+	NSString *cancelButtonTitle = NSLocalizedString(KEY_ALERT_BUTTON_CANCEL, nil);
+	
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: alertTitle
+                                                    message: error
+                                                   delegate: nil
+                                          cancelButtonTitle: cancelButtonTitle
+                                          otherButtonTitles: nil];
+    [alert show];
 }
 
 #pragma mark - Table Methods -
 
-- (UITableViewCell *)tableView:(UITableView *)tableView
-		 cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView: (UITableView *)tableView
+		 cellForRowAtIndexPath: (NSIndexPath *)indexPath
 {
 	NSString *cellIdentifier = @"Cell";
 	
@@ -66,38 +74,40 @@
 	{
 		imgTeamLogo.image		= nil;
 
-		lblPlayed.text			= NSLocalizedString(@"STANDINGS_HEADER_PLAYED", nil);
-		lblWon.text				= NSLocalizedString(@"STANDINGS_HEADER_WON", nil);
-		lblLost.text			= NSLocalizedString(@"STANDINGS_HEADER_LOST", nil);
-		lblDrawn.text			= NSLocalizedString(@"STANDINGS_HEADER_DRAWN", nil);
-		lblGoalDifference.text	= NSLocalizedString(@"STANDINGS_HEADER_GOAL_DIFFERENCE", nil);
-		lblPoints.text			= NSLocalizedString(@"STANDINGS_HEADER_POINTS", nil);
+		lblPlayed.text			= NSLocalizedString(KEY_STANDINGS_HEADER_PLAYED, nil);
+		lblWon.text				= NSLocalizedString(KEY_STANDINGS_HEADER_WON, nil);
+		lblLost.text			= NSLocalizedString(KEY_STANDINGS_HEADER_LOST, nil);
+		lblDrawn.text			= NSLocalizedString(KEY_STANDINGS_HEADER_DRAWN, nil);
+		lblGoalDifference.text	= NSLocalizedString(KEY_STANDINGS_HEADER_GOAL_DIFFERENCE, nil);
+		lblPoints.text			= NSLocalizedString(KEY_STANDINGS_HEADER_POINTS, nil);
 		
 	}
 	else
 	{
 		NSDictionary *standingDictionary = [self.standings objectAtIndex: indexPath.row - 1];
-		NSString *team = [NSString stringWithFormat: @"%@-Logo", [standingDictionary objectForKey: @"Team"]];
+		NSString *team = [NSString stringWithFormat: @"%@-Logo", [standingDictionary objectForKey: JSON_KEY_TEAM]];
 		
 		imgTeamLogo.image		= [UIImage imageNamed: team];
-		lblPlayed.text			= [standingDictionary objectForKey: @"Played"];
-		lblWon.text				= [standingDictionary objectForKey: @"Won"];
-		lblLost.text			= [standingDictionary objectForKey: @"Lost"];
-		lblDrawn.text			= [standingDictionary objectForKey: @"Drawn"];
-		lblGoalDifference.text	= [standingDictionary objectForKey: @"GoalDifference"];
-		lblPoints.text			= [standingDictionary objectForKey: @"Points"];
+		lblPlayed.text			= [standingDictionary objectForKey: JSON_KEY_PLAYED];
+		lblWon.text				= [standingDictionary objectForKey: JSON_KEY_WON];
+		lblLost.text			= [standingDictionary objectForKey: JSON_KEY_LOST];
+		lblDrawn.text			= [standingDictionary objectForKey: JSON_KEY_DRAWN];
+		lblGoalDifference.text	= [standingDictionary objectForKey: JSON_KEY_GOAL_DIFFERENCE];
+		lblPoints.text			= [standingDictionary objectForKey: JSON_KEY_POINTS];
 
 	}
 	
 	return cell;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+
+- (NSInteger)tableView: (UITableView *)tableView
+ numberOfRowsInSection: (NSInteger)section
 {
 	return [self.standings count] + 1;
 }
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView: (UITableView *)tableView
 {
     return 1;
 }

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CCResults.h"
 
-@interface CCResultsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface CCResultsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, CCResultsDelegate>
 
 @property (nonatomic,strong) NSMutableArray	*results;
 

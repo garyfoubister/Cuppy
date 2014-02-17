@@ -14,13 +14,14 @@
 
 + (CCAppData *)instance;
 
+- (NSString *)getStandingsLastUpdated;
 - (NSMutableArray *)getCachedStandings;
 - (void)saveCachedStandings: (NSMutableArray *)standings;
 
-- (NSString *)getStandingsLastUpdated;
-- (void) saveStandingslastUpdate: (NSString *)lastUpdated;
-
+- (NSString *)getResultsLastUpdated;
 - (NSMutableArray *)getCachedResults;
 - (void)saveCachedResults: (NSMutableArray *)results;
+
+
 
 @end

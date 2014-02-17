@@ -7,6 +7,7 @@
 //
 
 #import "CCAboutViewController.h"
+#import "Constants.h"
 
 @interface CCAboutViewController ()
 
@@ -18,9 +19,8 @@
 {
     [super viewDidLoad];
 	
-	self.lblTitle.text = NSLocalizedString(@"ABOUT_TITLE", nil);
-	self.txtAbout.text = NSLocalizedString(@"ABOUT_TEXT", nil);
-
+	self.lblTitle.text = NSLocalizedString(KEY_ABOUT_TITLE, nil);
+	self.txtAbout.text = NSLocalizedString(KEY_ABOUT_TEXT, nil);
 }
 
 @end
