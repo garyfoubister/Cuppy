@@ -133,6 +133,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="tay-6C-Ig3"/>
                     <connections>
+                        <outlet property="imgBackground" destination="c98-jQ-bpY" id="Z5p-1f-1HH"/>
                         <outlet property="lblTitle" destination="yzp-SO-fyM" id="2qE-yH-ULZ"/>
                         <outlet property="tableView" destination="yUG-pb-AWP" id="abb-YA-vc0"/>
                     </connections>
@@ -247,6 +248,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="9xc-4f-aty"/>
                     <connections>
+                        <outlet property="imgBackground" destination="fdj-Yu-8yv" id="T9p-yl-BBO"/>
                         <outlet property="lblTitle" destination="mRw-l7-XTQ" id="YNg-1p-36X"/>
                         <outlet property="tableView" destination="dBN-a2-8im" id="u02-IV-YdD"/>
                     </connections>
@@ -300,6 +302,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Yrg-oB-pQX"/>
                     <connections>
+                        <outlet property="imgBackground" destination="wHp-GI-TrZ" id="bxQ-su-Pcq"/>
                         <outlet property="lblTitle" destination="Zd2-s5-hUM" id="qBf-PI-95M"/>
                         <outlet property="txtAbout" destination="kob-VY-4UR" id="eep-5N-qF5"/>
                     </connections>

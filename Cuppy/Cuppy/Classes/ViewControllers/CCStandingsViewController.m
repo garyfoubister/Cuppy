@@ -8,6 +8,7 @@
 
 #import "CCStandingsViewController.h"
 #import "Constants.h"
+#import "UIImage+ImageEffects.h"
 
 @interface CCStandingsViewController ()
 @end
@@ -21,10 +22,17 @@
     [super viewDidLoad];
 	
 	self.lblTitle.text = NSLocalizedString(KEY_STANDINGS_TITLE, nil);
+	[self applyLightEffectToBackground];
 	
 	[CCStandings instance].delegate = self;
 	
 	[[CCStandings instance] downloadStandings];
+}
+
+- (void)applyLightEffectToBackground
+{
+	UIImage *background = self.imgBackground.image;
+	self.imgBackground.image = [background applyLightEffect];
 }
 
 #pragma mark - Standings Data Methods -

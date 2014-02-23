@@ -11,6 +11,9 @@
 @interface CCAboutViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imgBackground;
+
 @property (weak, nonatomic) IBOutlet UITextView *txtAbout;
 
 @end

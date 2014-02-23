@@ -10,6 +10,7 @@
 		4E4F7C3518B19C820091DCE8 /* CCStandings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F7C3418B19C820091DCE8 /* CCStandings.m */; };
 		4E4F7C3818B19C900091DCE8 /* CCResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F7C3718B19C900091DCE8 /* CCResults.m */; };
 		4E4F7C3B18B19D790091DCE8 /* CCAppData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F7C3A18B19D790091DCE8 /* CCAppData.m */; };
+		4E6DBAC918B9975A009A34E1 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6DBAC818B9975A009A34E1 /* UIImage+ImageEffects.m */; };
 		4E7E2EAB18B00B5F00A4D5AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E7E2EAA18B00B5F00A4D5AC /* Foundation.framework */; };
 		4E7E2EAD18B00B5F00A4D5AC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E7E2EAC18B00B5F00A4D5AC /* CoreGraphics.framework */; };
 		4E7E2EAF18B00B5F00A4D5AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E7E2EAE18B00B5F00A4D5AC /* UIKit.framework */; };
@@ -50,6 +51,8 @@
 		4E4F7C3718B19C900091DCE8 /* CCResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCResults.m; sourceTree = "<group>"; };
 		4E4F7C3918B19D790091DCE8 /* CCAppData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAppData.h; sourceTree = "<group>"; };
 		4E4F7C3A18B19D790091DCE8 /* CCAppData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCAppData.m; sourceTree = "<group>"; };
+		4E6DBAC718B9975A009A34E1 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		4E6DBAC818B9975A009A34E1 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		4E7E2EA718B00B5F00A4D5AC /* Cuppy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cuppy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E7E2EAA18B00B5F00A4D5AC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4E7E2EAC18B00B5F00A4D5AC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -104,6 +107,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E6DBAC518B9975A009A34E1 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				4E6DBAC618B9975A009A34E1 /* Apple */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		4E6DBAC618B9975A009A34E1 /* Apple */ = {
+			isa = PBXGroup;
+			children = (
+				4E6DBAC718B9975A009A34E1 /* UIImage+ImageEffects.h */,
+				4E6DBAC818B9975A009A34E1 /* UIImage+ImageEffects.m */,
+			);
+			path = Apple;
+			sourceTree = "<group>";
+		};
 		4E7E2E9E18B00B5F00A4D5AC = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +164,7 @@
 				4EB174D718B1932D00F89C4A /* Localizable.strings */,
 				4E7E2EDF18B00BE200A4D5AC /* Classes */,
 				4E7E2EB118B00B5F00A4D5AC /* Supporting Files */,
+				4E6DBAC518B9975A009A34E1 /* ThirdParty */,
 			);
 			path = Cuppy;
 			sourceTree = "<group>";
@@ -332,6 +353,7 @@
 				4E4F7C3B18B19D790091DCE8 /* CCAppData.m in Sources */,
 				4E7E2EB718B00B5F00A4D5AC /* main.m in Sources */,
 				4E4F7C3518B19C820091DCE8 /* CCStandings.m in Sources */,
+				4E6DBAC918B9975A009A34E1 /* UIImage+ImageEffects.m in Sources */,
 				4E7E2EE818B00F6100A4D5AC /* CCStandingsViewController.m in Sources */,
 				4E4F7C3818B19C900091DCE8 /* CCResults.m in Sources */,
 				4E7E2EE518B00E0B00A4D5AC /* CCViewController.m in Sources */,
@@ -388,7 +410,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -427,7 +449,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;

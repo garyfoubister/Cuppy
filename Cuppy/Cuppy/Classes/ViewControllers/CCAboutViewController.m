@@ -8,6 +8,7 @@
 
 #import "CCAboutViewController.h"
 #import "Constants.h"
+#import "UIImage+ImageEffects.h"
 
 @interface CCAboutViewController ()
 
@@ -21,6 +22,14 @@
 	
 	self.lblTitle.text = NSLocalizedString(KEY_ABOUT_TITLE, nil);
 	self.txtAbout.text = NSLocalizedString(KEY_ABOUT_TEXT, nil);
+	
+	[self applyLightEffectToBackground];
+}
+
+- (void)applyLightEffectToBackground
+{
+	UIImage *background = self.imgBackground.image;
+	self.imgBackground.image = [background applyLightEffect];
 }
 
 @end

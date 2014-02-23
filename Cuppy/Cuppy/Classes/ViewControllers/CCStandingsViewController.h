@@ -14,6 +14,9 @@
 @property (nonatomic,strong) NSMutableArray	*standings;
 
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imgBackground;
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

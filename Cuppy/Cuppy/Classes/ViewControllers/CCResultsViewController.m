@@ -8,6 +8,7 @@
 
 #import "CCResultsViewController.h"
 #import "Constants.h"
+#import "UIImage+ImageEffects.h"
 
 @interface CCResultsViewController ()
 
@@ -23,9 +24,17 @@
 	
 	self.lblTitle.text = NSLocalizedString(KEY_RESULTS_TITLE, nil);
 	
+	[self applyLightEffectToBackground];
+	
 	[CCResults instance].delegate = self;
 	
 	[[CCResults instance] downloadResults];
+}
+
+- (void)applyLightEffectToBackground
+{
+	UIImage *background = self.imgBackground.image;
+	self.imgBackground.image = [background applyLightEffect];
 }
 
 #pragma mark - Results Data Methods -
