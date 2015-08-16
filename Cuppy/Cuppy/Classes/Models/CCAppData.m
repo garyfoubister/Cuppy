@@ -16,93 +16,93 @@
 static CCAppData *instance = nil;
 + (CCAppData *) instance
 {
-	static dispatch_once_t onceToken;
-	
-	dispatch_once(&onceToken, ^{
-		instance = [[CCAppData alloc] init];
-	});
-	
-	return instance;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        instance = [[CCAppData alloc] init];
+    });
+    
+    return instance;
 }
 
 - (id)init
 {
-	if ((self = [super init]))
-	{
-		self.userDefaults = [NSUserDefaults standardUserDefaults];
-	}
-	
-	return self;
+    if ((self = [super init]))
+    {
+        self.userDefaults = [NSUserDefaults standardUserDefaults];
+    }
+    
+    return self;
 }
 
 #pragma mark - Standings -
 
 - (NSMutableArray *)getCachedStandings
 {
-	NSData *cachedStandingsData = [self.userDefaults objectForKey: KEY_CACHED_STANDINGS];
-	return (NSMutableArray*)[NSKeyedUnarchiver unarchiveObjectWithData: cachedStandingsData];
+    NSData *cachedStandingsData = [self.userDefaults objectForKey: KEY_CACHED_STANDINGS];
+    return (NSMutableArray*)[NSKeyedUnarchiver unarchiveObjectWithData: cachedStandingsData];
 }
 
 - (void)saveCachedStandings: (NSMutableArray *)standings
 {
-	[self saveStandingslastUpdate];
-	
-	NSData *standingsData = [NSKeyedArchiver archivedDataWithRootObject: standings];
-	[self.userDefaults setValue: standingsData forKey: KEY_CACHED_STANDINGS];
-	[self.userDefaults synchronize];
+    [self saveStandingslastUpdate];
+    
+    NSData *standingsData = [NSKeyedArchiver archivedDataWithRootObject: standings];
+    [self.userDefaults setValue: standingsData forKey: KEY_CACHED_STANDINGS];
+    [self.userDefaults synchronize];
 }
 
 - (NSString *)getStandingsLastUpdated
 {
-	NSString *lastUpdated = [self.userDefaults stringForKey: KEY_STANDINGS_LAST_UPDATED];
-	return lastUpdated;
+    NSString *lastUpdated = [self.userDefaults stringForKey: KEY_STANDINGS_LAST_UPDATED];
+    return lastUpdated;
 }
 
 - (void) saveStandingslastUpdate
 {
-	[self.userDefaults setValue: [self getCurrentDateAndTimeAsString] forKey: KEY_STANDINGS_LAST_UPDATED];
-	[self.userDefaults synchronize];
+    [self.userDefaults setValue: [self getCurrentDateAndTimeAsString] forKey: KEY_STANDINGS_LAST_UPDATED];
+    [self.userDefaults synchronize];
 }
 
 #pragma mark - Results -
 
 - (NSMutableArray *)getCachedResults
 {
-	NSData *cachedResultsData = [self.userDefaults objectForKey: KEY_CACHED_RESULTS];
-	return (NSMutableArray*)[NSKeyedUnarchiver unarchiveObjectWithData: cachedResultsData];
+    NSData *cachedResultsData = [self.userDefaults objectForKey: KEY_CACHED_RESULTS];
+    return (NSMutableArray*)[NSKeyedUnarchiver unarchiveObjectWithData: cachedResultsData];
 }
 
 - (void)saveCachedResults: (NSMutableArray *)results
 {
-	[self saveResultslastUpdate];
-	
-	NSData *resultsData = [NSKeyedArchiver archivedDataWithRootObject: results];
-	[self.userDefaults setValue: resultsData forKey: KEY_CACHED_RESULTS];
-	[self.userDefaults synchronize];
+    [self saveResultslastUpdate];
+    
+    NSData *resultsData = [NSKeyedArchiver archivedDataWithRootObject: results];
+    [self.userDefaults setValue: resultsData forKey: KEY_CACHED_RESULTS];
+    [self.userDefaults synchronize];
 }
 
 - (NSString *)getResultsLastUpdated
 {
-	NSString *lastUpdated = [self.userDefaults stringForKey: KEY_RESULTS_LAST_UPDATED];
-	return lastUpdated;
+    NSString *lastUpdated = [self.userDefaults stringForKey: KEY_RESULTS_LAST_UPDATED];
+    return lastUpdated;
 }
 
 - (void) saveResultslastUpdate
 {
-	[self.userDefaults setValue: [self getCurrentDateAndTimeAsString] forKey: KEY_RESULTS_LAST_UPDATED];
-	[self.userDefaults synchronize];
+    [self.userDefaults setValue: [self getCurrentDateAndTimeAsString] forKey: KEY_RESULTS_LAST_UPDATED];
+    [self.userDefaults synchronize];
 }
 
 #pragma mark - Date -
 
 - (NSString *)getCurrentDateAndTimeAsString
 {
-	NSDateFormatter *dateformater = [[NSDateFormatter alloc] init];
-	[dateformater setDateFormat: @"YYYY-MM-dd hh:mm:ss a"];
-	
-	NSString *formattedDateString = [dateformater stringFromDate: [NSDate date]];
-	
-	return formattedDateString;
+    NSDateFormatter *dateformater = [[NSDateFormatter alloc] init];
+    [dateformater setDateFormat: @"YYYY-MM-dd hh:mm:ss a"];
+    
+    NSString *formattedDateString = [dateformater stringFromDate: [NSDate date]];
+    
+    return formattedDateString;
 }
 
 @end
