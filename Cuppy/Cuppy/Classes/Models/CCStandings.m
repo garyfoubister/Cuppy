@@ -29,22 +29,13 @@ static CCStandings *instance = nil;
 	return instance;
 }
 
-#pragma mark - Public Methods - 
+#pragma mark - Public Methods -
 
 - (void)downloadStandings
 {
 	[self loadCachedStandings];
 	
-	// TODO: Download the Standings when the endpoint is available
-			
-//	dispatch_async(BACKGROUND_QUEUE, ^{
-//		
-//        NSData *data = [NSData dataWithContentsOfURL: [NSURL URLWithString: URL_STANDINGS]];
-//        
-//		[self performSelectorOnMainThread: @selector(didFetchStandingsData:)
-//							   withObject: data
-//							waitUntilDone: YES];
-//    });
+	// TODO: Download the Standings from service
 }
 
 #pragma mark - Private Methods -
@@ -62,7 +53,7 @@ static CCStandings *instance = nil;
 	{
 		standings = [self loadStandingsFromFile];
 	}
-		
+	
 	[self notifyDelegateStandingsWereFetched: standings];
 }
 
@@ -70,16 +61,16 @@ static CCStandings *instance = nil;
 {
 	NSMutableArray *standings = [[NSMutableArray alloc] init];
 	
-    NSString *path = [[NSBundle mainBundle] pathForResource: @"Standings"
-                                                     ofType: @"json"];
+	NSString *path = [[NSBundle mainBundle] pathForResource: @"Standings"
+													 ofType: @"json"];
 	
-    NSString *data = [NSString stringWithContentsOfFile: path
-                                               encoding: NSUTF8StringEncoding
-                                                  error: nil];
-    
-    NSData *resultData = [data dataUsingEncoding:NSUTF8StringEncoding];
+	NSString *data = [NSString stringWithContentsOfFile: path
+											   encoding: NSUTF8StringEncoding
+												  error: nil];
 	
-    standings = [NSJSONSerialization JSONObjectWithData: resultData
+	NSData *resultData = [data dataUsingEncoding:NSUTF8StringEncoding];
+	
+	standings = [NSJSONSerialization JSONObjectWithData: resultData
 												options: kNilOptions
 												  error: nil];
 	
@@ -103,7 +94,7 @@ static CCStandings *instance = nil;
 			errorDownloading = NO;
 			
 			[[CCAppData instance] saveCachedStandings: standings];
-
+			
 			[self notifyDelegateStandingsWereFetched: standings];
 		}
 	}

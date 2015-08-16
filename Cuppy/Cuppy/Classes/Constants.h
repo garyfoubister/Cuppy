@@ -11,11 +11,6 @@
 
 #define BACKGROUND_QUEUE dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
-#pragma mark - Endpoints -
-
-#define URL_STANDINGS							@"http://silver-shine.com/projects/cuppy/data/Standings.json"
-#define URL_RESULTS								@"http://silver-shine.com/projects/cuppy/data/Results.json"
-
 #pragma mark - App Data Keys -
 
 #define KEY_RESULTS_LAST_UPDATED				@"KeyResultsLastUpdated"

@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+	[super viewDidLoad];
 	
 	self.lblTitle.text = NSLocalizedString(KEY_RESULTS_TITLE, nil);
 	
@@ -50,12 +50,12 @@
 	NSString *alertTitle = NSLocalizedString(KEY_ALERT_TITLE_CUPPY, nil);
 	NSString *cancelButtonTitle = NSLocalizedString(KEY_ALERT_BUTTON_CANCEL, nil);
 	
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: alertTitle
-                                                    message: error
-                                                   delegate: nil
-                                          cancelButtonTitle: cancelButtonTitle
-                                          otherButtonTitles: nil];
-    [alert show];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle: alertTitle
+													message: error
+												   delegate: nil
+										  cancelButtonTitle: cancelButtonTitle
+										  otherButtonTitles: nil];
+	[alert show];
 }
 
 #pragma mark - Table Methods -
@@ -78,7 +78,7 @@
 	UIImageView *imgAwayTeamLogo	= (UIImageView *)[cell viewWithTag:104];
 	UILabel *lblDateAndVenue		= (UILabel *)[cell viewWithTag: 105];
 	
-
+	
 	NSDictionary *resultsDictionary = [self.results objectAtIndex: indexPath.row];
 	
 	NSString *homeTeam = [NSString stringWithFormat: @"%@-Logo", [resultsDictionary objectForKey: JSON_KEY_HOME]];
@@ -88,8 +88,8 @@
 	NSString *dateAndVenue = [NSString stringWithFormat: @"%@ - %@",
 							  [resultsDictionary objectForKey: JSON_KEY_DATE],
 							  [resultsDictionary objectForKey: JSON_KEY_VENUE]];
-		
-
+	
+	
 	imgHomeTeamLogo.image		= [UIImage imageNamed: homeTeam];
 	imgAwayTeamLogo.image		= [UIImage imageNamed: awayTeam];
 	lblHomeGoals.text			= [resultsDictionary objectForKey: JSON_KEY_HOME_GOAL];
@@ -107,7 +107,7 @@
 
 - (NSInteger)numberOfSectionsInTableView: (UITableView *)tableView
 {
-    return 1;
+	return 1;
 }
 
 @end

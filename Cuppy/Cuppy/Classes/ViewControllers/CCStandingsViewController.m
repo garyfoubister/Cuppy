@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+	[super viewDidLoad];
 	
 	self.lblTitle.text = NSLocalizedString(KEY_STANDINGS_TITLE, nil);
 	[self applyLightEffectToBackground];
@@ -48,12 +48,12 @@
 	NSString *alertTitle = NSLocalizedString(KEY_ALERT_TITLE_CUPPY, nil);
 	NSString *cancelButtonTitle = NSLocalizedString(KEY_ALERT_BUTTON_CANCEL, nil);
 	
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: alertTitle
-                                                    message: error
-                                                   delegate: nil
-                                          cancelButtonTitle: cancelButtonTitle
-                                          otherButtonTitles: nil];
-    [alert show];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle: alertTitle
+													message: error
+												   delegate: nil
+										  cancelButtonTitle: cancelButtonTitle
+										  otherButtonTitles: nil];
+	[alert show];
 }
 
 #pragma mark - Table Methods -
@@ -69,7 +69,7 @@
 	{
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier: cellIdentifier];
 	}
-
+	
 	UIImageView *imgTeamLogo	= (UIImageView *)[cell viewWithTag:100];
 	UILabel *lblPlayed			= (UILabel *)[cell viewWithTag: 101];
 	UILabel *lblWon				= (UILabel *)[cell viewWithTag: 102];
@@ -81,7 +81,7 @@
 	if (indexPath.row == 0)
 	{
 		imgTeamLogo.image		= nil;
-
+		
 		lblPlayed.text			= NSLocalizedString(KEY_STANDINGS_HEADER_PLAYED, nil);
 		lblWon.text				= NSLocalizedString(KEY_STANDINGS_HEADER_WON, nil);
 		lblLost.text			= NSLocalizedString(KEY_STANDINGS_HEADER_LOST, nil);
@@ -102,7 +102,7 @@
 		lblDrawn.text			= [standingDictionary objectForKey: JSON_KEY_DRAWN];
 		lblGoalDifference.text	= [standingDictionary objectForKey: JSON_KEY_GOAL_DIFFERENCE];
 		lblPoints.text			= [standingDictionary objectForKey: JSON_KEY_POINTS];
-
+		
 	}
 	
 	return cell;
@@ -117,7 +117,7 @@
 
 - (NSInteger)numberOfSectionsInTableView: (UITableView *)tableView
 {
-    return 1;
+	return 1;
 }
 
 @end

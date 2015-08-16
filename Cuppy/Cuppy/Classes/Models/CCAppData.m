@@ -35,7 +35,7 @@ static CCAppData *instance = nil;
 	return self;
 }
 
-#pragma mark - Standings - 
+#pragma mark - Standings -
 
 - (NSMutableArray *)getCachedStandings
 {

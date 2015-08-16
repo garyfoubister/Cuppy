@@ -24,12 +24,12 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+	[super viewDidLoad];
 	
 	[self addMotionEffects];
-
+	
 	[self addDynamicAnimatorAndGravityBehaviorsToView];
-
+	
 	[self addStandingsResultsAndAboutViews];
 }
 

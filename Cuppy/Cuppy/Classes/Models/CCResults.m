@@ -32,16 +32,7 @@ static CCResults *instance = nil;
 {
 	[self loadCachedResults];
 	
-	// TODO: Download the results when the endpoint is available
-	
-//	dispatch_async(BACKGROUND_QUEUE, ^{
-//		
-//        NSData *data = [NSData dataWithContentsOfURL: [NSURL URLWithString: URL_RESULTS]];
-//        
-//		[self performSelectorOnMainThread: @selector(didFetchResultsData:)
-//							   withObject: data
-//							waitUntilDone: YES];
-//    });
+	// TODO: Download the results from service
 }
 
 #pragma mark - Private Methods -
