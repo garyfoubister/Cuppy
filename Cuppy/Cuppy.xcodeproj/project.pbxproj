@@ -202,8 +202,8 @@
 			children = (
 				4E4F7C3218B19B850091DCE8 /* Constants.h */,
 				4E7E2EE018B00BE200A4D5AC /* Models */,
-				4E7E2EE118B00BE200A4D5AC /* ViewControllers */,
 				4E7E2EE218B00BE200A4D5AC /* Views */,
+				4E7E2EE118B00BE200A4D5AC /* Controllers */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -223,7 +223,7 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		4E7E2EE118B00BE200A4D5AC /* ViewControllers */ = {
+		4E7E2EE118B00BE200A4D5AC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				4E7E2EE318B00E0B00A4D5AC /* CCViewController.h */,
@@ -235,6 +235,7 @@
 				4E7E2EEC18B00F8000A4D5AC /* CCAboutViewController.h */,
 				4E7E2EED18B00F8000A4D5AC /* CCAboutViewController.m */,
 			);
+			name = Controllers;
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
