@@ -294,6 +294,9 @@
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Silver Shine, LLC";
 				TargetAttributes = {
+					4E7E2EA618B00B5F00A4D5AC = {
+						DevelopmentTeam = 59ZDUKDTBB;
+					};
 					4E7E2EC718B00B5F00A4D5AC = {
 						TestTargetID = 4E7E2EA618B00B5F00A4D5AC;
 					};
@@ -481,6 +484,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = 59ZDUKDTBB;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cuppy/Cuppy-Prefix.pch";
 				INFOPLIST_FILE = "Cuppy/Cuppy-Info.plist";
@@ -494,6 +498,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = 59ZDUKDTBB;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cuppy/Cuppy-Prefix.pch";
 				INFOPLIST_FILE = "Cuppy/Cuppy-Info.plist";
