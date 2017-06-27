@@ -11,6 +11,7 @@
 
 @interface CCViewController ()
 {
+    CGPoint _dockPoint;
     CGPoint _previousTouchPoint;
     BOOL    _draggingView;
     BOOL    _viewDocked;
@@ -26,6 +27,8 @@
 {
     [super viewDidLoad];
     
+    [self initDockPoint];
+    
     [self addMotionEffects];
     
     [self addDynamicAnimatorAndGravityBehaviorsToView];
@@ -33,14 +36,22 @@
     [self addStandingsResultsAndAboutViews];
 }
 
+#pragma mark - Docking - 
+
+- (void)initDockPoint
+{
+    _dockPoint = CGPointMake(self.view.center.x, self.view.center.y + 20);
+}
+
 #pragma mark - Motions Effects -
 
-- (void) addMotionEffects
+- (void)addMotionEffects
 {
     [self addMotionEffectToView: self.imgBackgroundTop magnitude: 20.0f];
 }
 
-- (void)addMotionEffectToView: (UIView *)view magnitude: (CGFloat)magnitude
+- (void)addMotionEffectToView: (UIView *)view
+                    magnitude: (CGFloat)magnitude
 {
     UIInterpolatingMotionEffect *xMotion =
     [[UIInterpolatingMotionEffect alloc] initWithKeyPath: @"center.x"
@@ -62,7 +73,7 @@
 
 #pragma mark - Dynamic Animator And Gravity  -
 
-- (void) addDynamicAnimatorAndGravityBehaviorsToView
+- (void)addDynamicAnimatorAndGravityBehaviorsToView
 {
     self.animator = [[UIDynamicAnimator alloc] initWithReferenceView: self.view];
     self.gravity = [[UIGravityBehavior alloc] init];
@@ -86,24 +97,28 @@
 - (void)addStandings
 {
     UIViewController *standings = [self instantiateViewControllerWithIdentifier: @"Standings"];
+    
     [self.views addObject: [self addViewController: standings atOffset: 210.0f]];
 }
 
 - (void)addResults
 {
     UIViewController *standings = [self instantiateViewControllerWithIdentifier: @"Results"];
+    
     [self.views addObject: [self addViewController: standings atOffset: 140.0f]];
 }
 
 - (void)addAbout
 {
     UIViewController *standings = [self instantiateViewControllerWithIdentifier: @"About"];
+    
     [self.views addObject: [self addViewController: standings atOffset: 70.0f]];
 }
 
 - (UIViewController *)instantiateViewControllerWithIdentifier: (NSString *)identifier
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName: @"Main" bundle: nil];
+    
     UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier: identifier];
     return viewController;
 }
@@ -203,6 +218,17 @@
         
         _viewDocked = NO;
     }
+    else
+    {
+        [UIView animateWithDuration: 0.25
+                         animations: ^{
+                             tappedView.center = _dockPoint;
+                         }];
+        
+        [self tryToDockView: tappedView];
+        
+        [self.animator updateItemUsingCurrentState: tappedView];
+    }
 }
 
 #pragma mark - Gesture Events -
@@ -215,9 +241,7 @@
     {
         if (!_viewDocked)
         {
-            CGPoint dockPoint = CGPointMake(self.view.center.x, self.view.center.y + 20);
-            
-            self.snap = [[UISnapBehavior alloc] initWithItem: view snapToPoint: dockPoint];
+            self.snap = [[UISnapBehavior alloc] initWithItem: view snapToPoint: _dockPoint];
             
             [self.animator addBehavior: self.snap];
             
@@ -239,7 +263,8 @@
     }
 }
 
-- (void)setAlphaWhenIsViewDocked: (UIView *)view alpha: (CGFloat)alpha
+- (void)setAlphaWhenIsViewDocked: (UIView *)view
+                           alpha: (CGFloat)alpha
 {
     for (UIView * aView in _views)
     {
@@ -250,7 +275,8 @@
     }
 }
 
-- (void)addVelocityToView: (UIView *)view fromGesture: (UIPanGestureRecognizer *)gesture
+- (void)addVelocityToView: (UIView *)view
+              fromGesture: (UIPanGestureRecognizer *)gesture
 {
     CGPoint vel = [gesture velocityInView: self.view];
     vel.x = 0;
