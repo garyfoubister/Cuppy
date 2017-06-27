@@ -88,40 +88,65 @@
                                                 <view alpha="0.69999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLl-1N-QW6">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                                     <subviews>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="105" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHM-wO-8W8" userLabel="lblDateAndVenue">
-                                                            <rect key="frame" x="20" y="10" width="280" height="24"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="105" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHM-wO-8W8" userLabel="lblDateAndVenue">
+                                                            <rect key="frame" x="20" y="10" width="335" height="21"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" tag="101" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RKX-GL-NDo" userLabel="imgHomeTeamLogo">
-                                                            <rect key="frame" x="50" y="40" width="60" height="60"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <imageView userInteractionEnabled="NO" tag="101" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RKX-GL-NDo" userLabel="imgHomeTeamLogo">
+                                                            <rect key="frame" x="91" y="40" width="60" height="60"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="60" id="0ef-Pk-onH"/>
+                                                                <constraint firstAttribute="width" constant="60" id="Evx-Io-ldC"/>
+                                                            </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZd-EK-LKW" userLabel="lblHomeGoals">
-                                                            <rect key="frame" x="118" y="56" width="30" height="24"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZd-EK-LKW" userLabel="lblHomeGoals">
+                                                            <rect key="frame" x="159" y="56" width="23" height="24"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDK-Sn-I8E" userLabel="lblDivider">
-                                                            <rect key="frame" x="150" y="56" width="20" height="24"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDK-Sn-I8E" userLabel="lblDivider">
+                                                            <rect key="frame" x="184" y="56" width="8" height="24"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F30-fL-bhE" userLabel="lblAwayGoals">
-                                                            <rect key="frame" x="172" y="56" width="30" height="24"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F30-fL-bhE" userLabel="lblAwayGoals">
+                                                            <rect key="frame" x="194" y="56" width="23" height="24"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" tag="104" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iJR-kx-DfI" userLabel="imgAwayTeamLogo">
-                                                            <rect key="frame" x="210" y="40" width="60" height="60"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <imageView userInteractionEnabled="NO" tag="104" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iJR-kx-DfI" userLabel="imgAwayTeamLogo">
+                                                            <rect key="frame" x="225" y="40" width="60" height="60"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="9Ae-Fw-h4Y"/>
+                                                                <constraint firstAttribute="width" constant="60" id="kfu-c4-IbG"/>
+                                                                <constraint firstAttribute="height" constant="60" id="zmZ-3C-Zeu"/>
+                                                            </constraints>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="RKX-GL-NDo" firstAttribute="top" secondItem="MHM-wO-8W8" secondAttribute="bottom" constant="9.5" id="0lg-R4-248"/>
+                                                        <constraint firstAttribute="bottom" secondItem="QDK-Sn-I8E" secondAttribute="bottom" constant="20" id="1Wd-Mu-ene"/>
+                                                        <constraint firstItem="PZd-EK-LKW" firstAttribute="leading" secondItem="RKX-GL-NDo" secondAttribute="trailing" constant="8" id="4JS-UO-Tw3"/>
+                                                        <constraint firstAttribute="bottom" secondItem="F30-fL-bhE" secondAttribute="bottom" constant="20" id="BCe-vF-I4g"/>
+                                                        <constraint firstItem="iJR-kx-DfI" firstAttribute="leading" secondItem="F30-fL-bhE" secondAttribute="trailing" constant="8" id="DIN-P2-m94"/>
+                                                        <constraint firstItem="MHM-wO-8W8" firstAttribute="top" secondItem="vLl-1N-QW6" secondAttribute="top" constant="10" id="HUf-Ds-NDV"/>
+                                                        <constraint firstItem="F30-fL-bhE" firstAttribute="leading" secondItem="QDK-Sn-I8E" secondAttribute="trailing" constant="2" id="I1u-HJ-hpE"/>
+                                                        <constraint firstItem="F30-fL-bhE" firstAttribute="top" secondItem="MHM-wO-8W8" secondAttribute="bottom" constant="25.5" id="JaI-IW-WDA"/>
+                                                        <constraint firstItem="MHM-wO-8W8" firstAttribute="leading" secondItem="vLl-1N-QW6" secondAttribute="leading" constant="20" id="P11-FN-uGT"/>
+                                                        <constraint firstAttribute="bottom" secondItem="PZd-EK-LKW" secondAttribute="bottom" constant="20" id="PC2-KA-h8I"/>
+                                                        <constraint firstItem="PZd-EK-LKW" firstAttribute="leading" secondItem="RKX-GL-NDo" secondAttribute="trailing" constant="8" id="RIv-lp-Mew"/>
+                                                        <constraint firstItem="QDK-Sn-I8E" firstAttribute="leading" secondItem="PZd-EK-LKW" secondAttribute="trailing" constant="2" id="WXN-NM-mcJ"/>
+                                                        <constraint firstItem="PZd-EK-LKW" firstAttribute="top" secondItem="MHM-wO-8W8" secondAttribute="bottom" constant="25.5" id="Xvg-aL-1EG"/>
+                                                        <constraint firstAttribute="trailing" secondItem="MHM-wO-8W8" secondAttribute="trailing" constant="20" id="a81-o8-ZmP"/>
+                                                        <constraint firstItem="iJR-kx-DfI" firstAttribute="leading" secondItem="F30-fL-bhE" secondAttribute="trailing" constant="8" id="ayv-bs-jcf"/>
+                                                        <constraint firstAttribute="bottom" secondItem="iJR-kx-DfI" secondAttribute="bottom" id="dtM-7t-sht"/>
+                                                        <constraint firstItem="iJR-kx-DfI" firstAttribute="top" secondItem="MHM-wO-8W8" secondAttribute="bottom" constant="9.5" id="eUB-VI-Xxm"/>
+                                                        <constraint firstItem="QDK-Sn-I8E" firstAttribute="top" secondItem="MHM-wO-8W8" secondAttribute="bottom" constant="25.5" id="oBd-kB-24k"/>
+                                                        <constraint firstItem="QDK-Sn-I8E" firstAttribute="centerX" secondItem="vLl-1N-QW6" secondAttribute="centerX" id="toR-2b-hfs"/>
+                                                        <constraint firstAttribute="bottom" secondItem="RKX-GL-NDo" secondAttribute="bottom" id="wMB-Sk-qwO"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
