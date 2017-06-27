@@ -159,9 +159,6 @@
 			children = (
 				4E7E2EB918B00B5F00A4D5AC /* CCAppDelegate.h */,
 				4E7E2EBA18B00B5F00A4D5AC /* CCAppDelegate.m */,
-				4E7E2EBC18B00B5F00A4D5AC /* Main.storyboard */,
-				4E7E2EC218B00B5F00A4D5AC /* Images.xcassets */,
-				4EB174D718B1932D00F89C4A /* Localizable.strings */,
 				4E7E2EDF18B00BE200A4D5AC /* Classes */,
 				4E7E2EB118B00B5F00A4D5AC /* Supporting Files */,
 				4E6DBAC518B9975A009A34E1 /* ThirdParty */,
@@ -172,6 +169,8 @@
 		4E7E2EB118B00B5F00A4D5AC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4E7E2EC218B00B5F00A4D5AC /* Images.xcassets */,
+				4EB174D718B1932D00F89C4A /* Localizable.strings */,
 				4E7E2EB218B00B5F00A4D5AC /* Cuppy-Info.plist */,
 				4E7E2EB318B00B5F00A4D5AC /* InfoPlist.strings */,
 				4E7E2EB618B00B5F00A4D5AC /* main.m */,
@@ -242,6 +241,7 @@
 		4E7E2EE218B00BE200A4D5AC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4E7E2EBC18B00B5F00A4D5AC /* Main.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -396,6 +396,7 @@
 				4E7E2EBD18B00B5F00A4D5AC /* Base */,
 			);
 			name = Main.storyboard;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		4E7E2ED218B00B5F00A4D5AC /* InfoPlist.strings */ = {

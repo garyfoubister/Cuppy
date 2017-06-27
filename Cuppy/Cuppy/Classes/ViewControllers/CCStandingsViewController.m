@@ -48,12 +48,24 @@
     NSString *alertTitle = NSLocalizedString(KEY_ALERT_TITLE_CUPPY, nil);
     NSString *cancelButtonTitle = NSLocalizedString(KEY_ALERT_BUTTON_CANCEL, nil);
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: alertTitle
-                                                    message: error
-                                                   delegate: nil
-                                          cancelButtonTitle: cancelButtonTitle
-                                          otherButtonTitles: nil];
-    [alert show];
+    UIAlertController *alert =
+        [UIAlertController alertControllerWithTitle: alertTitle
+                                            message: error
+                                     preferredStyle: UIAlertControllerStyleAlert];
+    
+    UIAlertAction *btnCancel =
+        [UIAlertAction actionWithTitle: cancelButtonTitle
+                                 style: UIAlertActionStyleDefault
+                               handler: ^(UIAlertAction * action)
+    {
+        // No action required
+    }];
+    
+    [alert addAction: btnCancel];
+    
+    [self presentViewController: alert
+                       animated: YES
+                     completion: nil];
 }
 
 #pragma mark - Table Methods -
