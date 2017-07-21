@@ -33,31 +33,38 @@ static CCStandings *instance = nil;
 
 - (void)downloadStandings
 {
-    [self loadCachedStandings];
+    NSLog(@"Loading standings...");
     
-    // TODO: Download the Standings from service
+    [self loadCachedStandings];
+
+    NSLog(@"Downloading standings...");
+    
+    NSData *standingsData = [NSData dataWithContentsOfURL: [NSURL URLWithString: STANDINGS_DATA_URL]];
+    
+    [self didFetchStandingsData: standingsData];
+    
 }
 
 #pragma mark - Private Methods -
 
 - (void)loadCachedStandings
 {
-    NSMutableArray *standings;
-    NSString *standingsLastUpdated = [[CCAppData instance] getStandingsLastUpdated];
+    NSLog(@"Loading cached standings...");
     
-    if (standingsLastUpdated)
+    NSMutableArray *standings = [[CCAppData instance] getCachedStandings];
+    
+    if (!standings)
     {
-        standings = [[CCAppData instance] getCachedStandings];
-    }
-    else
-    {
-        standings = [self loadStandingsFromFile];
+        NSLog(@"No standings were cached. Loading default standings file...");
+        
+        standings = [self loadDefaultStandingsFromFile];
     }
     
     [self notifyDelegateStandingsWereFetched: standings];
 }
 
-- (NSMutableArray *)loadStandingsFromFile
+
+- (NSMutableArray *)loadDefaultStandingsFromFile
 {
     NSMutableArray *standings = [[NSMutableArray alloc] init];
     
@@ -107,6 +114,8 @@ static CCStandings *instance = nil;
 
 - (void)notifyDelegateStandingsWereFetched: (NSMutableArray *)standings
 {
+    NSLog(@"Standings loaded / fetched");
+    
     if ([self.delegate respondsToSelector: @selector(didFetchStandings:)])
     {
         [self.delegate didFetchStandings: standings];
@@ -115,6 +124,8 @@ static CCStandings *instance = nil;
 
 - (void)notifyDelegateOfErrorFetchingStandings: (NSString *)error
 {
+    NSLog(@"Error fetching standings: %@", error);
+    
     if ([self.delegate respondsToSelector: @selector(didFailToFetchStandings:)])
     {
         [self.delegate didFailToFetchStandings: error];

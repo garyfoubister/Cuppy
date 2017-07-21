@@ -30,24 +30,29 @@ static CCResults *instance = nil;
 
 - (void)downloadResults
 {
+    NSLog(@"Loading results...");
+    
     [self loadCachedResults];
     
-    // TODO: Download the results from service
+    NSLog(@"Downloading results...");
+    
+    NSData *resultsData = [NSData dataWithContentsOfURL: [NSURL URLWithString: RESULTS_DATA_URL]];
+    
+    [self didFetchResultsData: resultsData];
 }
 
 #pragma mark - Private Methods -
 
 - (void)loadCachedResults
 {
-    NSMutableArray *results;
-    NSString *resultsLastUpdated = [[CCAppData instance] getResultsLastUpdated];
+    NSLog(@"Loading cached results...");
     
-    if (resultsLastUpdated)
+    NSMutableArray *results = [[CCAppData instance] getCachedResults];
+    
+    if (!results)
     {
-        results = [[CCAppData instance] getCachedResults];
-    }
-    else
-    {
+        NSLog(@"No results were cached. Loading default results file...");
+        
         results = [self loadResultsFromFile];
     }
     
@@ -65,7 +70,7 @@ static CCResults *instance = nil;
                                                encoding: NSUTF8StringEncoding
                                                   error: nil];
     
-    NSData *resultData = [data dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *resultData = [data dataUsingEncoding: NSUTF8StringEncoding];
     
     results = [NSJSONSerialization JSONObjectWithData: resultData
                                               options: kNilOptions
@@ -74,16 +79,16 @@ static CCResults *instance = nil;
     return results;
 }
 
-- (void)didFetchResultsData: (NSData *)reultsData
+- (void)didFetchResultsData: (NSData *)resultsData
 {
     BOOL errorDownloading = YES;
     
-    if (reultsData != nil)
+    if (resultsData != nil)
     {
         NSError *error;
         NSMutableArray *results = [[NSMutableArray alloc] init];
         
-        results = [NSJSONSerialization JSONObjectWithData: reultsData
+        results = [NSJSONSerialization JSONObjectWithData: resultsData
                                                   options: kNilOptions
                                                     error: &error];
         if (error == nil)
@@ -104,6 +109,8 @@ static CCResults *instance = nil;
 
 - (void)notifyDelegateResultsWereFetched: (NSMutableArray *)results
 {
+    NSLog(@"Results loaded / fetched");
+    
     if ([self.delegate respondsToSelector: @selector(didFetchResults:)])
     {
         [self.delegate didFetchResults: results];
@@ -112,6 +119,8 @@ static CCResults *instance = nil;
 
 - (void)notifyDelegateOfErrorFetchingResults: (NSString *)error
 {
+    NSLog(@"Error fetching results: %@", error);
+    
     if ([self.delegate respondsToSelector: @selector(didFailToFetchResults:)])
     {
         [self.delegate didFailToFetchResults: error];

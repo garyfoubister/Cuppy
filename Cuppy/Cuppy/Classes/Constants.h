@@ -11,15 +11,17 @@
 
 #define BACKGROUND_QUEUE dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
+#pragma mark - Data URLs -
+
+#define RESULTS_DATA_URL    @"https://raw.githubusercontent.com/garyfoubister/Cuppy-Data/2017/Results.json"
+
+#define STANDINGS_DATA_URL  @"https://raw.githubusercontent.com/garyfoubister/Cuppy-Data/2017/Standings.json"
+
 #pragma mark - App Data Keys -
 
-#define KEY_RESULTS_LAST_UPDATED                @"KeyResultsLastUpdated"
 #define KEY_CACHED_RESULTS                      @"KeyCachedResults"
 
-#define KEY_STANDINGS_LAST_UPDATED              @"KeyStandingsLastUpdated"
 #define KEY_CACHED_STANDINGS                    @"KeyCachedStandings"
-
-
 
 #pragma mark - Localizations Keys -
 

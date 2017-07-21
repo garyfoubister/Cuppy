@@ -1,74 +1,74 @@
- [
+[
   {
-  "Date": "April 5, 2014",
-  "Home": "Portland",
-  "Away": "Seattle",
-  "HomeGoals": "4",
-  "AwayGoals": "4",
-  "Venue": "Portland, OR"
+    "Date": "April 14, 2017",
+    "Home": "Vancouver",
+    "Away": "Seattle",
+    "HomeGoals": "-",
+    "AwayGoals": "-",
+    "Venue": "Vancouver, BC"
   },
   {
-  "Date": "May 24, 2014",
-  "Home": "Vancouver",
-  "Away": "Seattle",
-  "HomeGoals": "2",
-  "AwayGoals": "2",
-  "Venue": "Vancouver, BC"
+    "Date": "April 22, 2017",
+    "Home": "Portland",
+    "Away": "Vancouver",
+    "HomeGoals": "-",
+    "AwayGoals": "-",
+    "Venue": "Portland, OR"
   },
   {
-  "Date": "June 1, 2014",
-  "Home": "Portland",
-  "Away": "Vancouver",
-  "HomeGoals": "3",
-  "AwayGoals": "4",
-  "Venue": "Portland, OR"
+    "Date": "May 27, 2017",
+    "Home": "Seattle",
+    "Away": "Portland",
+    "HomeGoals": "-",
+    "AwayGoals": "-",
+    "Venue": "Seattle, WA"
   },
   {
-  "Date": "July 5, 2014",
-  "Home": "Vancouver",
-  "Away": "Seattle",
-  "HomeGoals": "1",
-  "AwayGoals": "0",
-  "Venue": "Vancouver, BC"
+    "Date": "June 25, 2017",
+    "Home": "Portland",
+    "Away": "Seattle",
+    "HomeGoals": "-",
+    "AwayGoals": "-",
+    "Venue": "Portland, OR"
   },
   {
-  "Date": "July 13, 2014",
-  "Home": "Seattle",
-  "Away": "Portland",
-  "HomeGoals": "2",
-  "AwayGoals": "0",
-  "Venue": "Seattle, WA"
+    "Date": "July 23, 2017",
+    "Home": "Vancouver",
+    "Away": "Portland",
+    "HomeGoals": "-",
+    "AwayGoals": "-",
+    "Venue": "Vancouver, BC"
   },
   {
-  "Date": "August 24, 2014",
-  "Home": "Portland",
-  "Away": "Seattle",
-  "HomeGoals": "2",
-  "AwayGoals": "4",
-  "Venue": "Portland, OR"
+    "Date": "August 23, 2017",
+    "Home": "Vancouver",
+    "Away": "Seattle",
+    "HomeGoals": "-",
+    "AwayGoals": "-",
+    "Venue": "Vancouver, BC"
   },
   {
-  "Date": "August 30, 2014",
-  "Home": "Vancouver",
-  "Away": "Portland",
-  "HomeGoals": "0",
-  "AwayGoals": "3",
-  "Venue": "Vancouver, BC"
+    "Date": "August 27, 2017",
+    "Home": "Seattle",
+    "Away": "Portland",
+    "HomeGoals": "-",
+    "AwayGoals": "-",
+    "Venue": "Seattle, WA"
   },
   {
-  "Date": "September 20, 2014",
-  "Home": "Portland",
-  "Away": "Vancouver",
-  "HomeGoals": "3",
-  "AwayGoals": "0",
-  "Venue": "Portland, OR"
+    "Date": "September 27, 2017",
+    "Home": "Seattle",
+    "Away": "Vancouver",
+    "HomeGoals": "-",
+    "AwayGoals": "-",
+    "Venue": "Seattle, WA"
   },
   {
-  "Date": "October 10, 2014",
-  "Home": "Seattle",
-  "Away": "Vancouver",
-  "HomeGoals": "0",
-  "AwayGoals": "1",
-  "Venue": "Seattle, WA"
+    "Date": "October 22, 2017",
+    "Home": "Portland",
+    "Away": "Vancouver",
+    "HomeGoals": "-",
+    "AwayGoals": "-",
+    "Venue": "Portland, OR"
   }
-  ]
+]
